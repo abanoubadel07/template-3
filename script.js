@@ -1,4 +1,4 @@
-let num = document.querySelectorAll(".number");
+let nums = document.querySelectorAll(".number");
 let section = document.querySelector(".stats .box");
 
 function startCount(el) {
