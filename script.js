@@ -1,11 +1,22 @@
-let nums = document.querySelectorAll(".number");
-let section = document.querySelector(".stats .box");
+let nums = document.querySelectorAll(".stats .number");
+let statsSection = document.querySelector(".stats");
+let started = false;
+
+window.onscroll = function () {
+    if (window.scrollY >= statsSection.offsetTop) {
+        if (!started) {
+            nums.forEach((num) => startCount(num));
+        }
+        started = true;
+    }
+};
 
 function startCount(el) {
     let goal = el.dataset.goal;
     let count = setInterval(() => {
-        el.textContent++
-    }, 100);
-}
-
-startCount(document.querySelectorAll(".number")[0]);
+        el.textContent++;
+        if (el.textContent == goal) {
+            clearInterval(count);
+        }
+    }, 2000 / goal);
+};
